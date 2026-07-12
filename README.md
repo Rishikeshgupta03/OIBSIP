@@ -200,49 +200,7 @@ A sample run's console output is saved in `output/sample_run_output.txt`.
 
 ---
 
-## 8. Viva / Interview Questions
-
-1. **Why did you separate `Bank` and `Account` into two classes instead of one?**
-   Single Responsibility Principle — `Account` manages one customer's data,
-   while `Bank` manages the collection of all accounts and cross-account
-   operations like transfers.
-
-2. **Why does `Account` not expose a public `setBalance()` method?**
-   To guarantee every balance change is logged as a `Transaction`. Allowing
-   a direct setter would let the balance and history drift out of sync.
-
-3. **Why use two `HashMap`s in `Bank` instead of one?**
-   To get O(1) lookups both by `userId` (used during login) and by
-   `accountNumber` (used during transfers), instead of scanning a list.
-
-4. **How does the application prevent crashes on invalid input?**
-   `Utils.readSafeInt()` / `readSafeDouble()` loop with `try/catch` around
-   `Integer.parseInt` / `Double.parseDouble`, re-prompting on
-   `NumberFormatException` instead of propagating it.
-
-5. **How would you persist accounts across runs (add a database)?**
-   Replace the in-memory `HashMap`s inside `Bank` with a repository
-   interface backed by JDBC/a file, without changing `ATM.java` at all —
-   this is the benefit of separating business logic from the UI layer.
-
-6. **What OOP principles are demonstrated here?**
-   Encapsulation (private fields + getters/setters), composition
-   (`Account` has a `List<Transaction>`, `Bank` has `Account`s),
-   abstraction (UI code depends only on public methods, not internals),
-   and method overloading (`Transaction`'s two constructors).
-
-7. **Why is `Transaction`'s `dateTime` field `final`?**
-   A transaction record should be immutable once created — a real bank
-   never edits a past transaction's timestamp.
-
-8. **How is the 3-failed-login-attempt lockout implemented?**
-   `ATM.login()` uses a countdown loop (`attemptsRemaining`), decrementing
-   on every failed `bank.authenticate()` call, and returns `null` to signal
-   the caller to terminate the application once attempts reach zero.
-
----
-
-## 9. Possible Future Improvements
+## 8. Possible Future Improvements
 
 - Persist accounts and transactions to a file or real database (JDBC)
 - Add PIN-change and new-account-registration features
@@ -253,6 +211,6 @@ A sample run's console output is saved in `output/sample_run_output.txt`.
 
 ---
 
-## 10. Author
+## 9. Author
 
 Built for the **Oasis Infobyte Java Development Internship — Task 3: ATM Interface**.
