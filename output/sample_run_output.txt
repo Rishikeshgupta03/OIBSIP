@@ -1,0 +1,185 @@
+============================================================
+            WELCOME TO THE ATM INTERFACE SYSTEM
+============================================================
+============================================================
+                           LOGIN
+============================================================
+Enter User ID: 12345
+Enter PIN: 9696
+Invalid User ID or PIN. Attempts remaining: 2
+------------------------------------------------------------
+Enter User ID: john01
+Enter PIN: 1111
+
+Login successful. Welcome, John Carter!
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 1
+============================================================
+                      BALANCE INQUIRY
+============================================================
+Current Balance: Rs. 15,000.00
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 2
+============================================================
+                       DEPOSIT MONEY
+============================================================
+Enter amount to deposit: 100
+Deposit successful!
+New Balance: Rs. 15,100.00
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 3
+============================================================
+                       WITHDRAW MONEY
+============================================================
+Enter amount to withdraw: 200
+Withdrawal successful!
+New Balance: Rs. 14,900.00
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 4
+============================================================
+                       TRANSFER MONEY
+============================================================
+Enter destination Account Number: 1234567
+Enter amount to transfer: 100
+Transfer failed: Destination account number does not exist.
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 4
+============================================================
+                       TRANSFER MONEY
+============================================================
+Enter destination Account Number: 1000000004
+Enter amount to transfer: 100
+Transfer successful!
+New Balance: Rs. 14,800.00
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 5
+============================================================
+                    TRANSACTION HISTORY
+============================================================
+Txn ID          Date & Time            Type           Amount          Balance         Description
+------------------------------------------------------------
+TXN600026000    12-Jul-2026 02:55:48 pm DEPOSIT        Rs. 5,000.00    Rs. 15,000.00   Initial Cash Deposit
+TXN5039100      12-Jul-2026 02:55:48 pm WITHDRAW       Rs. 1,200.00    Rs. 15,000.00   ATM Cash Withdrawal
+TXN683254600    12-Jul-2026 03:06:43 pm DEPOSIT        Rs. 100.00      Rs. 15,100.00   Cash Deposit
+TXN340229900    12-Jul-2026 03:07:07 pm WITHDRAW       Rs. 200.00      Rs. 14,900.00   Cash Withdrawal
+TXN288100500    12-Jul-2026 03:21:12 pm TRANSFER-OUT   Rs. 100.00      Rs. 14,800.00   Transfer to 1000000004 (Lisa Brown)
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 6
+============================================================
+                      ACCOUNT DETAILS
+============================================================
+Customer Name   : John Carter
+User ID         : john01
+Account Number  : 1000000001
+Account Type    : Savings
+Current Balance : Rs. 14,800.00
+------------------------------------------------------------
+
+============================================================
+                         MAIN MENU
+============================================================
+1. Balance Inquiry
+2. Deposit Money
+3. Withdraw Money
+4. Transfer Money
+5. Transaction History
+6. Account Details
+7. Logout
+8. Exit
+------------------------------------------------------------
+Choose an option (1-8): 7
+Logging out... Returning to login screen.
+============================================================
+                           LOGIN
+============================================================
