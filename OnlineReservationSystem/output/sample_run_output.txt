@@ -1,0 +1,10 @@
+[OK] Database initialized (tables created + sample data seeded)
+[OK] Login admin/admin123 -> User{id=1, username='admin'}
+[OK] Login admin/wrongpass -> REJECTED as expected
+[OK] Auto-fill lookup for train 12301 -> 12301 - Rajdhani Express
+[OK] Generated unique 10-digit PNR -> 6093423222
+[OK] Reservation booked and saved to SQLite
+[OK] View Reservation by PNR -> Reservation{pnr='6093423222', passengerName='Rahul Kumar', trainNumber='12301'}
+[OK] View unknown PNR -> null (Reservation Not Found)
+[OK] Cancel Reservation -> deleted=true
+[OK] All DAO-layer operations completed successfully. No crashes.
