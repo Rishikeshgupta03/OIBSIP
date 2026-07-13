@@ -30,24 +30,24 @@ util/      →  Cross-cutting helpers (validation, PNR generation, dates)
 
 ## 2. Features
 
-- 🔐 **Login** — username/password authentication with a clear invalid-login message
-- 🧭 **Dashboard** — Reserve Ticket / View Reservation / Cancel Reservation / Logout / Exit
-- 🎫 **Reserve Ticket**
+-  **Login** — username/password authentication with a clear invalid-login message
+-  **Dashboard** — Reserve Ticket / View Reservation / Cancel Reservation / Logout / Exit
+-  **Reserve Ticket**
   - Passenger Name, Age, Gender, Train Number, auto-filled Train Name,
     Journey Date, Class, Source, Destination
   - Book / Reset / Back buttons
   - Full input validation before booking
   - Auto-generates a unique 10-digit PNR
   - Success dialog showing the new PNR
-- 🔍 **View Reservation** — search by PNR, full details or "Reservation Not Found"
-- ❌ **Cancel Reservation** — fetch by PNR, confirmation dialog, delete, success message
-- 🗄️ **SQLite database** — auto-created tables (`Users`, `Trains`, `Reservations`),
+-  **View Reservation** — search by PNR, full details or "Reservation Not Found"
+-  **Cancel Reservation** — fetch by PNR, confirmation dialog, delete, success message
+-  **SQLite database** — auto-created tables (`Users`, `Trains`, `Reservations`),
   auto-seeded with a login user and 5 sample trains
-- 🚄 **Train auto-fill** — typing a valid train number fills in the train name automatically
-- 🛡️ **Robust validation** — no empty fields, alphabets-only names, age 1–120,
+-  **Train auto-fill** — typing a valid train number fills in the train name automatically
+-  **Robust validation** — no empty fields, alphabets-only names, age 1–120,
   valid train numbers, journey date can't be in the past, source ≠ destination,
   duplicate PNRs are prevented
-- 💥 **Crash-proof** — every DB call and every input parse is wrapped in
+-  **Crash-proof** — every DB call and every input parse is wrapped in
   try/catch with friendly dialogs; the app never terminates unexpectedly
 
 ---
@@ -246,61 +246,7 @@ database — confirming the full data layer works correctly.
 
 ---
 
-## 9. Viva / Interview Questions
-
-1. **Why is all SQL confined to the `dao` package?**
-   Single Responsibility Principle — UI classes handle presentation,
-   DAO classes handle persistence. This also makes it trivial to swap
-   SQLite for another database later without touching any UI code.
-
-2. **How does this project prevent SQL injection?**
-   Every single query uses `PreparedStatement` with `?` placeholders
-   and `setString`/`setInt` — user input is never concatenated into a
-   SQL string.
-
-3. **How is PNR uniqueness guaranteed?**
-   `ReservationDAO.generateUniquePnr()` loops: generate a random
-   10-digit code via `PNRGenerator`, then check `pnrExists()` against
-   the database, repeating until an unused code is found. The
-   `pnr` column is also the table's `PRIMARY KEY`, so even in a
-   theoretical race condition the database itself would reject a
-   duplicate insert.
-
-4. **Why does `DatabaseInitializer` use `CREATE TABLE IF NOT EXISTS`
-   and `INSERT OR IGNORE`?**
-   So it can be safely called on every application startup — the first
-   run creates and seeds everything, and every subsequent run is a
-   harmless no-op instead of throwing "table already exists" errors.
-
-5. **How does the Reserve Ticket screen auto-fill the train name?**
-   A `FocusListener` on the Train Number field calls
-   `TrainDAO.findByTrainNumber()` when the field loses focus, and sets
-   the (read-only) Train Name field from the result, or warns the user
-   if the train number doesn't exist.
-
-6. **What happens if the user enters a journey date in the past?**
-   `Validation.parseAndValidateJourneyDate()` parses the date with
-   `LocalDate.parse()` and throws an `IllegalArgumentException` if it's
-   before `LocalDate.now()`, which the UI catches and shows as a
-   validation dialog — the booking is never attempted.
-
-7. **How would you migrate this from SQLite to MySQL/PostgreSQL?**
-   Change the JDBC URL and driver class name in `DBConnection`, and
-   swap `AUTOINCREMENT`/`INSERT OR IGNORE` for the target database's
-   equivalents in `DatabaseInitializer` — no DAO, model, or UI code
-   needs to change, since they all go through `DBConnection` and
-   standard JDBC interfaces.
-
-8. **Why does `Reservation` not have a public no-arg-mutation for `pnr`
-   after creation logically?**
-   While the class does expose a setter for flexibility, in practice
-   the PNR is only ever set once at creation time by
-   `ReservationDAO.generateUniquePnr()`, keeping each reservation's
-   identity stable for its whole lifecycle.
-
----
-
-## 10. Possible Future Improvements
+## 9. Possible Future Improvements
 
 - Hash passwords (e.g. BCrypt) instead of storing them as plain text
 - Add seat/berth availability tracking per train and journey date
